@@ -1,0 +1,123 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.encabezado{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px;
+    border-bottom: 3px solid
+}
+
+main{
+    width: 75%;
+    margin: 0 auto;
+    overflow-y: scroll;
+    padding: 10px 40px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.enunciado{
+    gap: 10px;
+}
+
+.casillaEjercicio{
+    height: 300px;
+    border: 3px solid black;
+}
+
+
+#buscador{
+    margin: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+#barraBusqueda{
+
+    padding: 10px;
+    width: 75%;
+    border: 2px solid black;
+    border-radius: 12px;
+    outline: none;
+
+}
+
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    }
+
+    .cartaPokemon{
+        width: 250px;
+        height: 350px;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        display: grid;
+        grid-template-rows: 50px 1fr 60px;
+        grid-template-columns: 1fr 1fr;
+        overflow: hidden;
+        text-align: center;
+        transition: transform 0.75s ease, box-shadow 0.75s ease;
+        margin: 15px;
+    }
+
+    .cartaPokemon:hover {
+      transform: scale(1.08);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3); /* Sombra más intensa */
+    }
+
+    .numero {
+      grid-row: 1;
+      grid-column: 1;
+      align-self: center;
+      justify-self: start;
+      margin-left: 10px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+
+    .tipo{
+      grid-row: 1;
+      grid-column: 2;
+      align-self: center;
+      justify-self: end;
+      margin-right: 10px;
+      font-size: 16px;
+    }
+
+    .foto {
+      grid-row: 2;
+      grid-column: 1 / span 2;
+      align-self: center;
+      justify-self: center;
+      width: 150px;
+      height: 150px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 10px;
+    }
+
+    .nombre {
+      grid-row: 3;
+      grid-column: 1 / span 2;
+      align-self: center;
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+    }
