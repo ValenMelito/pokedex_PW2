@@ -89,8 +89,8 @@ $directorioDestino = "imagen/";
             $row = mysqli_fetch_assoc($consulta);
             for($nroEjercicio=1;$nroEjercicio<15;$nroEjercicio++){
                 //for($i=0;$i <$nroFilas;$i++){
-
-                echo "<div class='cartaPokemon'>";
+                
+                echo "<div class='cartaPokemon'><a href='archivos.php?id=".$row['id']."'>";
                 echo   "<div class='numero'>".$row['id']."</div>";
                 echo   "<div class='tipo'>".$row['tipo']."</div>";
                 echo    "<img src=".$row['foto']." alt='Foto' class='foto'>";

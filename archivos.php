@@ -6,7 +6,33 @@
     <title>Document</title>
 </head>
 <body>
-    
+
+<?php
+$conexion = mysqli_connect("localhost", "root", "", "pokemones", 3307)
+            or die ("No se puede conectar con el servidor");
+
+// Revisar si recibimos un id
+if (isset($_GET['id'])) {
+    $id = intval($_GET['id']); // Convertir a número para seguridad
+
+    $query = "SELECT * FROM pokemones WHERE id = $id";
+    $result = mysqli_query($conexion, $query);
+
+    if ($row = mysqli_fetch_assoc($result)) {
+        echo "<h1>{$row['nombre']}</h1>";
+        echo "<img src='{$row['foto']}' alt='{$row['nombre']}' width='200'>";
+        echo "<p><b>Número:</b> {$row['numero']}</p>";
+        echo "<p><b>Tipo:</b> {$row['tipo']}</p>";
+        echo "<p><b>Descripción:</b> {$row['descripcion']}</p>";
+    } else {
+        echo "Pokémon no encontrado.";
+    }
+} else {
+    echo "No se especificó ningún Pokémon.";
+}
+?>    
+
+
     <form action="index.php"
     method="POST"
     enctype="multipart/form-data"
