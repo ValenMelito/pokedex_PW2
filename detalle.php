@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Detalle Pokemon</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
+<?php include 'includes/header.php'; ?>
 <?php
 $conexion = mysqli_connect("localhost", "root", "", "pokemones", 3307)
             or die ("No se puede conectar con el servidor");
