@@ -12,23 +12,39 @@
            $conexion = mysqli_connect("localhost", "root", "", "pokemones", 3307)
             or die ("No se puede conectar con el servidor");
             
-            $sql= "SELECT * FROM pokemones";
-            $consulta = mysqli_query($conexion, $sql); 
+            
+            $sql = "
+            SELECT *,    
+            GROUP_CONCAT(t.nombre SEPARATOR ', ') AS tipos
+            FROM pokemone2 p
+            JOIN pokemon_tipos pt ON p.id = pt.pokemon_id
+            JOIN tipos t ON pt.tipo_id = t.id
+            GROUP BY p.id
+            ORDER BY p.numero
+            ";
+            $consulta = mysqli_query($conexion, $sql);
 
             $nroFilas=  mysqli_num_rows($consulta);
-
+            for($i=0;$i<$nroFilas;$i++){
             $row = mysqli_fetch_assoc($consulta);
-            for($nroEjercicio=1;$nroEjercicio<15;$nroEjercicio++){
-                echo "<a href='detalle.php?id={$row['id']}'>";
-                echo "<div class='cartaPokemon'>";
-                echo "<div class='numero'>#{$row['id']}</div>";
-                echo "<div class='tipo'>{$row['tipo']}</div>";
-                echo "<img src=".$row['foto']." alt='Foto' class='foto'>";
-                echo "<div class='nombre'>{$row['nombre']}</div>";
-                echo "</div>";
-                echo "</a>"; 
 
-                    
+                echo "<a href='detalle.php?id={$row['id']}'>";
+                echo    "<div class='cartaPokemon'>";
+                echo        "<div class='numero'>#{$row['numero']}</div>";
+
+                
+                echo        "<div class='tipos'>";
+                $tiposArray = explode(", ", $row['tipos']);
+                foreach ($tiposArray as $tipo) {
+                    echo "<div class='tipo'>$tipo</div>";
+                }
+                echo        "</div>";
+
+                echo        "<img src=".$row['foto']." alt='Foto' class='foto'>";
+                echo        "<div class='nombre'>{$row['nombre']}</div>";
+                echo    "</div>";
+                echo "</a>"; 
+                
             }
         ?> 
         </main>
